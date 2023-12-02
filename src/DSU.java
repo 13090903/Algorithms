@@ -1,9 +1,10 @@
 public class DSU {
-    static int n;
     static int[] parent;
     static int[] rank;
+    static int[] size;
     static void makeSet(int v) {
         parent[v] = v;
+        size[v] = 1;
     }
 
     static void union(int v, int u) {
@@ -16,6 +17,7 @@ public class DSU {
                 a = tmp;
             }
             parent[b] = a;
+            size[a] += size[b];
             if (rank[a] == rank[b]) {
                 ++rank[a];
             }
